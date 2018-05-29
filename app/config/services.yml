@@ -29,7 +29,14 @@ services:
         public: true
         tags: ['controller.service_arguments']
 
+    app.controller.github:
+        class: AppBundle\Controller\GithubController
+        arguments:
+            - '@app.request'
     # add more services, or override services that need manual wiring
-    # AppBundle\Service\ExampleService:
-    #     arguments:
-    #         $someArgument: 'some_value'
+    app.request:
+        class: AppBundle\Service\Request
+        arguments: ['@service_container']
+    #AppBundle\Service\Request:
+    #    arguments:
+    #        $GITHUB_TOKEN: '%github_token%'
