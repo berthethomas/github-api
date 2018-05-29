@@ -3,7 +3,6 @@
 namespace AppBundle\Service;
 
 use Symfony\Component\DependencyInjection\ContainerInterface;
-use Symfony\Component\HttpFoundation\JsonResponse;
 
 class Request {
 
@@ -33,7 +32,7 @@ class Request {
         curl_close($ch);
 
 
-        return new JsonResponse($result);
+        return $result;
     }
 
 }
