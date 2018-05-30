@@ -56,6 +56,11 @@ class Livre {
     private $auteur;
 
     /**
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Commentaire", mappedBy="livre")
+     */
+    protected $commentaires;
+
+    /**
      * Get id
      *
      * @return int
@@ -152,7 +157,6 @@ class Livre {
         return $this->prix;
     }
 
-
     /**
      * Set auteur
      *
@@ -160,8 +164,7 @@ class Livre {
      *
      * @return Livre
      */
-    public function setAuteur(\AppBundle\Entity\Auteur $auteur = null)
-    {
+    public function setAuteur(\AppBundle\Entity\Auteur $auteur = null) {
         $this->auteur = $auteur;
 
         return $this;
@@ -172,8 +175,46 @@ class Livre {
      *
      * @return \AppBundle\Entity\Auteur
      */
-    public function getAuteur()
-    {
+    public function getAuteur() {
         return $this->auteur;
     }
+
+    /**
+     * Constructor
+     */
+    public function __construct() {
+        $this->commentaires = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add commentaire
+     *
+     * @param \AppBundle\Entity\Commentaire $commentaire
+     *
+     * @return Livre
+     */
+    public function addCommentaire(\AppBundle\Entity\Commentaire $commentaire) {
+        $this->commentaires[] = $commentaire;
+
+        return $this;
+    }
+
+    /**
+     * Remove commentaire
+     *
+     * @param \AppBundle\Entity\Commentaire $commentaire
+     */
+    public function removeCommentaire(\AppBundle\Entity\Commentaire $commentaire) {
+        $this->commentaires->removeElement($commentaire);
+    }
+
+    /**
+     * Get commentaires
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getCommentaires() {
+        return $this->commentaires;
+    }
+
 }

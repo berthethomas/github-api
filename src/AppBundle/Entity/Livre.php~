@@ -54,6 +54,12 @@ class Livre {
      * @ORM\JoinColumn(nullable=true, onDelete="SET NULL");
      */
     private $auteur;
+    
+    /**
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Commentaire", mappedBy="auteur")
+     * @ORM\OrderBy({"titre" = "ASC"})
+     */
+    protected $commentaires;
 
     /**
      * Get id
@@ -152,4 +158,28 @@ class Livre {
         return $this->prix;
     }
 
+
+    /**
+     * Set auteur
+     *
+     * @param \AppBundle\Entity\Auteur $auteur
+     *
+     * @return Livre
+     */
+    public function setAuteur(\AppBundle\Entity\Auteur $auteur = null)
+    {
+        $this->auteur = $auteur;
+
+        return $this;
+    }
+
+    /**
+     * Get auteur
+     *
+     * @return \AppBundle\Entity\Auteur
+     */
+    public function getAuteur()
+    {
+        return $this->auteur;
+    }
 }

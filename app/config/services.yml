@@ -28,6 +28,13 @@ services:
         autoconfigure: false
         public: true
         
+    resolver.commentaire:
+        class: AppBundle\Resolver\CommentaireResolver
+        parent: 'resolver.base'
+        autowire: true
+        autoconfigure: false
+        public: true
+        
     # default configuration for services in *this* file
     _defaults:
         # automatically injects dependencies in your services
