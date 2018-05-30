@@ -11,7 +11,7 @@ use AppBundle\Entity\Auteur;
 class AuteurController extends Controller {
 
     /**
-     * @Route("/auteur/add", name="auteur_add", methods={"POST"})
+     * @Route("/rest/auteur/add", name="auteur_add", methods={"POST"})
      */
     public function indexAction(Request $request) {
         $data = $request->request->all();

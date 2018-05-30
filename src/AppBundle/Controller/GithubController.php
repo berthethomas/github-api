@@ -16,7 +16,7 @@ class GithubController extends Controller {
     }
 
     /**
-     * @Route("/", name="github")
+     * @Route("/github", name="github")
      */
     public function indexAction(Request $request) {
         $user = NULL;

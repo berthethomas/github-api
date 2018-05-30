@@ -11,7 +11,7 @@ use AppBundle\Entity\Livre;
 class LivreController extends Controller {
 
     /**
-     * @Route("/livre/add", name="livre_add", methods={"POST"})
+     * @Route("/rest/livre/add", name="livre_add", methods={"POST"})
      */
     public function indexAction(Request $request) {
         $data = $request->request->all();
