@@ -14,6 +14,8 @@ use Youshido\GraphQL\Type\NonNullType;
 class FindLivreField extends AbstractContainerAwareField {
 
     public function resolve($value, array $args, ResolveInfo $info) {
+        $this->container->get('resolver.security')->checkTokenAuthentification();
+        
         return $this->container->get('resolver.livre')->find($args['id']);
     }
 

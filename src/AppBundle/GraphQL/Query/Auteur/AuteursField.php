@@ -12,6 +12,8 @@ use Youshido\GraphQLBundle\Field\AbstractContainerAwareField;
 class AuteursField extends AbstractContainerAwareField {
 
     public function resolve($value, array $args, ResolveInfo $info) {
+        $this->container->get('resolver.security')->checkTokenAuthentification();
+
         return $this->container->get('resolver.auteur')->findAll();
     }
 
@@ -21,7 +23,7 @@ class AuteursField extends AbstractContainerAwareField {
     public function getType() {
         return new ListType(new AuteurType());
     }
-    
+
     public function getName() {
         return "auteurs";
     }

@@ -24,6 +24,8 @@ class AddCommentaireField extends AbstractContainerAwareField {
     }
 
     public function resolve($value, array $args, ResolveInfo $info) {
+        $this->container->get('resolver.security')->checkTokenAuthentification();
+        
         return $this->container->get('resolver.commentaire')->add($args['texte'], $args['note'], $args['livre_id']);
     }
 
