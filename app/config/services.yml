@@ -4,6 +4,30 @@ parameters:
     #parameter_name: value
 
 services:
+    em:
+        class: Doctrine\ORM\EntityManager
+        factory: ['@doctrine', 'getManager']
+    
+    resolver.base:
+        class: AppBundle\Resolver\AbstractResolver
+        abstract: true
+        calls:
+            - [ init, ['@em']]
+            
+    resolver.auteur:
+        class: AppBundle\Resolver\AuteurResolver
+        parent: 'resolver.base'
+        autowire: true
+        autoconfigure: false
+        public: true
+        
+    resolver.livre:
+        class: AppBundle\Resolver\LivreResolver
+        parent: 'resolver.base'
+        autowire: true
+        autoconfigure: false
+        public: true
+        
     # default configuration for services in *this* file
     _defaults:
         # automatically injects dependencies in your services
@@ -37,6 +61,4 @@ services:
     app.request:
         class: AppBundle\Service\Request
         arguments: ['@service_container']
-    #AppBundle\Service\Request:
-    #    arguments:
-    #        $GITHUB_TOKEN: '%github_token%'
+        
