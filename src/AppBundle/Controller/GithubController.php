@@ -47,7 +47,7 @@ class GithubController extends Controller {
             }
         }
 
-        return $this->render('app/index.html.twig', array('login' => $login, 'user' => $user, 'count' => $count, 'error' => $error));
+        return $this->render('app/github.html.twig', array('login' => $login, 'user' => $user, 'count' => $count, 'error' => $error));
     }
 
     private function getCountOfRepositories($login) {
