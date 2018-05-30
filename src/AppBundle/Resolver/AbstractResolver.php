@@ -3,14 +3,16 @@
 namespace AppBundle\Resolver;
 
 use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Component\DependencyInjection\Container;
 
 abstract class AbstractResolver {
 
     /** @var  EntityManagerInterface */
     protected $em;
 
-    public function init(EntityManagerInterface $em) {
+    public function init(EntityManagerInterface $em, Container $container) {
         $this->em = $em;
+        $this->container = $container;
     }
 
     protected function createNotFoundException($message = 'Entity not found') {
@@ -22,6 +24,10 @@ abstract class AbstractResolver {
     }
 
     protected function createAccessDeniedException($message = 'No access to this action') {
+        return new \Exception($message, 403);
+    }
+    
+    protected function createInvalidAuthentificationException($message = 'Authentification failed') {
         return new \Exception($message, 403);
     }
 

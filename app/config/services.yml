@@ -12,7 +12,7 @@ services:
         class: AppBundle\Resolver\AbstractResolver
         abstract: true
         calls:
-            - [ init, ['@em']]
+            - [ init, ['@em', '@service_container']]
             
     resolver.auteur:
         class: AppBundle\Resolver\AuteurResolver
@@ -30,6 +30,20 @@ services:
         
     resolver.commentaire:
         class: AppBundle\Resolver\CommentaireResolver
+        parent: 'resolver.base'
+        autowire: true
+        autoconfigure: false
+        public: true
+        
+    resolver.security:
+        class: AppBundle\Resolver\SecurityResolver
+        parent: 'resolver.base'
+        autowire: true
+        autoconfigure: false
+        public: true
+        
+    resolver.token:
+        class: AppBundle\Resolver\TokenResolver
         parent: 'resolver.base'
         autowire: true
         autoconfigure: false
