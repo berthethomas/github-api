@@ -1,0 +1,13 @@
+.form-input-sm {
+    display : inline!important;
+    width : auto!important;
+}
+
+#table-auteurs {
+    margin-top : 5em;
+}
+
+table > thead > tr > th, table > tbody > tr > td, table > tfoot > tr > th {
+    text-align: center;
+    vertical-align: middle;
+}

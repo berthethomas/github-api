@@ -1,1 +1,101 @@
-{# empty Twig template #}
+{% extends 'base.html.twig' %}
+{% block title %}{{parent()}}API{% endblock %}
+{% block stylesheets %}
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{asset('css/main.css')}}">
+{% endblock %}
+
+{% block javascripts %}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script src="{{asset("js/jquery.cookie.js")}}"></script>
+    <script src="{{asset("js/jquery.dateformat.min.js")}}"></script>
+    <script src="{{asset("js/main.js")}}"></script>
+{% endblock %}
+
+{% block body %}
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <div class="well col-xs-12 col-sm-10 col-md-10 col-lg-10 col-sm-push-1 col-md-push-1 col-lg-push-1">
+            <h1 class="text-center">API GraphQL</h1>
+            <ul class="nav nav-tabs" role="tablist">
+                <li role="presentation" class="active"><a href="#livres" aria-controls="livres" role="tab" data-toggle="tab">Livres</a></li>
+                <li role="presentation" id="tab-auteurs"><a href="#auteurs" aria-controls="auteurs" role="tab" data-toggle="tab">Auteurs</a></li>
+            </ul>
+            <div class="tab-content">
+                <div role="tabpanel" class="tab-pane active" id="livres">
+                    <h2 class="text-center">Gestion des livres</h2>
+                    <br>
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                        <label for="auteur_id">Rechercher un livre par son ID : </label>
+                        <input id="livre-id" class="form-control form-input-sm"/>
+                        <button type="button" class="btn btn-sm btn-success">Rechercher</button>
+                    </div>
+                    <table class="table table-responsive table-condensed table-bordered" id="table-livres">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Nom</th>
+                                <th>Prénom</th>
+                                <th>Date de naissance</th>
+                                <th>Livres</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td></td>
+
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <th>ID</th>
+                                <th>Nom</th>
+                                <th>Prénom</th>
+                                <th>Date de naissance</th>
+                                <th>Livres</th>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+                <div role="tabpanel" class="tab-pane" id="auteurs">
+                    <h2 class="text-center">Gestion des auteurs</h2>
+                    <br>
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                        <label for="auteur_id">Rechercher un auteur par son ID : </label>
+                        <input id="auteur-id" class="form-control form-input-sm"/>
+                        <button type="button" class="btn btn-sm btn-success" id="recherche-auteur">Rechercher</button>
+                    </div>
+                    <table class="table table-responsive table-condensed table-bordered" id="table-auteurs">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Nom</th>
+                                <th>Prénom</th>
+                                <th>Date de naissance</th>
+                                <th>Livres</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <th>ID</th>
+                                <th>Nom</th>
+                                <th>Prénom</th>
+                                <th>Date de naissance</th>
+                                <th>Livres</th>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+
