@@ -19,7 +19,7 @@
         <div class="well col-xs-12 col-sm-10 col-md-10 col-lg-10 col-sm-push-1 col-md-push-1 col-lg-push-1">
             <h1 class="text-center">API GraphQL</h1>
             <ul class="nav nav-tabs" role="tablist">
-                <li role="presentation" class="active"><a href="#livres" aria-controls="livres" role="tab" data-toggle="tab">Livres</a></li>
+                <li role="presentation" class="active" id="tab-livres"><a href="#livres" aria-controls="livres" role="tab" data-toggle="tab">Livres</a></li>
                 <li role="presentation" id="tab-auteurs"><a href="#auteurs" aria-controls="auteurs" role="tab" data-toggle="tab">Auteurs</a></li>
             </ul>
             <div class="tab-content">
@@ -29,38 +29,60 @@
                     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                         <label for="auteur_id">Rechercher un livre par son ID : </label>
                         <input id="livre-id" class="form-control form-input-sm"/>
-                        <button type="button" class="btn btn-sm btn-success">Rechercher</button>
+                        <button type="button" class="btn btn-sm btn-success" id="recherche-livre">Rechercher</button>
+                        <button type="button" class="btn btn-sm btn-danger" id="reset-livre">Réinitialiser</button>
                     </div>
                     <table class="table table-responsive table-condensed table-bordered" id="table-livres">
                         <thead>
                             <tr>
                                 <th>ID</th>
-                                <th>Nom</th>
-                                <th>Prénom</th>
-                                <th>Date de naissance</th>
-                                <th>Livres</th>
+                                <th>Titre</th>
+                                <th>Genre</th>
+                                <th>Date de parution</th>
+                                <th>Prix</th>
+                                <th>Auteur</th>
+                                <th>Commentaire(s)</th>
+                                <th>Option</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td></td>
-
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                            </tr>
                         </tbody>
                         <tfoot>
                             <tr>
                                 <th>ID</th>
-                                <th>Nom</th>
-                                <th>Prénom</th>
-                                <th>Date de naissance</th>
-                                <th>Livres</th>
+                                <th>Titre</th>
+                                <th>Genre</th>
+                                <th>Date de parution</th>
+                                <th>Prix</th>
+                                <th>Auteur</th>
+                                <th>Commentaire(s)</th>
+                                <th>Option</th>
                             </tr>
                         </tfoot>
                     </table>
+                    
+                    <div class="modal fade" id="add-commentaire" tabindex="-1" role="dialog">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                    <h4 class="modal-title text-center">Ajouter un commentaire</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <label for="texte-commentaire">Texte : </label>
+                                    <textarea class="form-control" id="texte-commentaire"></textarea>
+                                    <br>
+                                    <label for="note-commentaire">Note : </label>
+                                    <input type="number" class="form-control" id="note-commentaire"/>
+                                    <input type="hidden" id="livre-id-commentaire"/>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-success btn-sm" id="add-commentaire-validation">Enregistrer</button>
+                                    <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Annuler</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div role="tabpanel" class="tab-pane" id="auteurs">
                     <h2 class="text-center">Gestion des auteurs</h2>
@@ -69,6 +91,7 @@
                         <label for="auteur_id">Rechercher un auteur par son ID : </label>
                         <input id="auteur-id" class="form-control form-input-sm"/>
                         <button type="button" class="btn btn-sm btn-success" id="recherche-auteur">Rechercher</button>
+                        <button type="button" class="btn btn-sm btn-danger" id="reset-auteur">Réinitialiser</button>
                     </div>
                     <table class="table table-responsive table-condensed table-bordered" id="table-auteurs">
                         <thead>
