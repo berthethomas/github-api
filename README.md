@@ -8,13 +8,14 @@ Projet développé en Symfony (v3.4). Projet mettant en place GraphQL de plusieu
 
 ## Installation
 - Cloner le projet GIT
+- Importer la base de données sur un serveur type MySQL
+```
+/github-api.sql
+```
+- Configurer le fichier paramters.yml avec votre configuration
 - Mettre à jour les dépendances
 ```
 composer install
-```
-- Mettre à jour la base de données (en ayant créé la base au préalable)
-```
-php bin/console doctrine:schema:update --force
 ```
 - Lancer le serveur
 ```
