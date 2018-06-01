@@ -12,7 +12,10 @@ Projet développé en Symfony (v3.4). Projet mettant en place GraphQL de plusieu
 ```
 /github-api.sql
 ```
-- Configurer le fichier paramters.yml avec votre configuration
+- Renommer le fichier parameters.yml.dist par parameters.yml tout en insérant votre configuration
+```
+cp app/config/parameters.yml.dist app/config.parameters.yml
+```
 - Mettre à jour les dépendances
 ```
 composer install
