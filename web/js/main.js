@@ -1,7 +1,5 @@
 $(document).ready(function () {
     checkAuthentification();
-    livres();
-    auteurs();
 });
 
 $(document).on('click', '#reset-livre', function () {
@@ -48,7 +46,10 @@ function authentification() {
         }),
         success: function (data) {
             if (data.data.authentification !== null && data.data.authentification !== "") {
+                console.log('authentification successful');
                 $.cookie("token", data.data.authentification, {expires: 10});
+                livres();
+                auteurs();
             } else {
                 console.log(data.errors);
             }
@@ -58,6 +59,8 @@ function authentification() {
 
 function checkAuthentification() {
     if ($.cookie("token")) {
+        livres();
+        auteurs();
         return true;
     }
     authentification();
